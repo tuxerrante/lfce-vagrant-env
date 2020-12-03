@@ -22,6 +22,11 @@ Vagrant.configure("2") do |config|
         vb.memory = node[:ram]
         vb.cpus = 1
       end
+
+      nodeconfig.vm.provider "docker" do |vb|
+        vb.memory = node[:ram]
+        vb.cpus = 1
+      end
     end
   end
 end
