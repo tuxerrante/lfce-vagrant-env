@@ -7,7 +7,7 @@ nodes = [
 Vagrant.configure("2") do |config|
   nodes.each do |node|
     config.vm.define node[:hostname] do |nodeconfig|
-      nodeconfig.vm.box = node[:box]
+      # nodeconfig.vm.box = node[:box]
       nodeconfig.vm.hostname = node[:hostname]
       nodeconfig.vm.network "private_network", ip: node[:ip]
       nodeconfig.vm.network "forwarded_port", guest: 22, host: node[:ssh_host_port], id: "ssh"
@@ -25,6 +25,7 @@ Vagrant.configure("2") do |config|
       end
 
       nodeconfig.vm.provider "virtualbox" do |vb|
+        vb.box = node[:box]
         vb.memory = node[:ram]
         vb.cpus = 1
       end
