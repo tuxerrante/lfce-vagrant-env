@@ -18,15 +18,17 @@ Vagrant.configure("2") do |config|
         nodeconfig.vm.provision node[:hostname], type: "shell", path: "provisioners/#{node[:hostname]}.sh"
       end
 
+      nodeconfig.vm.provider "docker" do |vb|
+        vb.memory = node[:ram]
+        vb.cpus = 1
+        vm.image="centos:7"
+      end
+
       nodeconfig.vm.provider "virtualbox" do |vb|
         vb.memory = node[:ram]
         vb.cpus = 1
       end
 
-      nodeconfig.vm.provider "docker" do |vb|
-        vb.memory = node[:ram]
-        vb.cpus = 1
-      end
     end
   end
 end
