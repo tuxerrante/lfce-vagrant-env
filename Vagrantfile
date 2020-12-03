@@ -19,8 +19,6 @@ Vagrant.configure("2") do |config|
       end
 
       nodeconfig.vm.provider "docker" do |vb|
-        vb.memory = node[:ram]
-        vb.cpus = 1
         vb.image="centos:7"
       end
 
