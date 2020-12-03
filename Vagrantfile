@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
       nodeconfig.vm.provider "docker" do |vb|
         vb.memory = node[:ram]
         vb.cpus = 1
-        vm.image="centos:7"
+        vb.image="centos:7"
       end
 
       nodeconfig.vm.provider "virtualbox" do |vb|
