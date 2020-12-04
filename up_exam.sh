@@ -5,7 +5,7 @@ if [[ -n "$1" ]]; then
 elif [[ "$1" = "docker" ]]; then
     echo Swarm Init...
     sudo docker swarm init --listen-addr 10.0.0.100:2377 --advertise-addr 10.100.199.200:2377
-    sudo docker swarm join-token --quiet worker > vagrant/worker_token
+    sudo docker swarm join-token --quiet worker | tee vagrant/worker_token
 fi
 
 cd "$1" || exit 1
